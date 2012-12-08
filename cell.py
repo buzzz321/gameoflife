@@ -10,3 +10,7 @@ class Cell:
         dy = math.fabs(self.y - cell.y)
 
         return dx <= 1 and dy <= 1 and not (dx == dy == 0)
+
+    def neighbors(self, cells):
+        count = 0
+        return sum(1 for cell in cells if self.is_neighbor(cell))

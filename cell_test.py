@@ -25,5 +25,10 @@ class TestSequenceFunctions(unittest.TestCase):
         uut = Cell(1,0)
         self.assertFalse(uut.is_neighbor(Cell(10,1)))
 
+    def test_tree_neighbors(self):
+        uut = Cell(1,0)
+        cells = [Cell(10,0), Cell(1,1), Cell(0,0), Cell(2,0)]
+        self.assertEqual(3, uut.neighbors(cells))
+
 if __name__ == '__main__':
     unittest.main()
