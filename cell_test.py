@@ -22,11 +22,11 @@ class TestSequenceFunctions(unittest.TestCase):
         self.assertTrue(uut.is_neighbor(Cell(1,1)))
 
     def test_if_not_neighbor(self):
-        uut = Cell(1,0)
+        uut = Cell(1, 0)
         self.assertFalse(uut.is_neighbor(Cell(10,1)))
 
     def test_if_not_neighbor_self(self):
-        uut = Cell(1,0)
+        uut = Cell(1, 0)
         self.assertFalse(uut.is_neighbor(Cell(1,0)))
 
     def test_tree_neighbors(self):

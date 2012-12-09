@@ -1,8 +1,11 @@
 from cell import *
+#lint:disable
 #Any live cell with fewer than two live neighbours dies, as if caused by under-population.
 #Any live cell with two or three live neighbours lives on to the next generation.
 #Any live cell with more than three live neighbours dies, as if by overcrowding.
 #Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+#lint:enable
+
 
 class Board:
 
@@ -10,12 +13,11 @@ class Board:
         self.cells = seed
         self.dead_cells = []
 
-    
     def rule_1(self):
         """
         Any live cell with fewer than two live neighbours dies, as if caused by under-population.
         """
-        return [cell for cell in self.cells if cell.neighbors(self.cells) < 2]        
+        return [cell for cell in self.cells if cell.neighbors(self.cells) < 2]
 
     def rule_2(self):
         """
