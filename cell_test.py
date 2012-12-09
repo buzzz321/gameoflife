@@ -1,6 +1,6 @@
 import unittest
 from cell import *
-
+from board import *
 #Any live cell with fewer than two live neighbours dies, as if caused by under-population.
 #Any live cell with two or three live neighbours lives on to the next generation.
 #Any live cell with more than three live neighbours dies, as if by overcrowding.
@@ -25,10 +25,27 @@ class TestSequenceFunctions(unittest.TestCase):
         uut = Cell(1,0)
         self.assertFalse(uut.is_neighbor(Cell(10,1)))
 
+    def test_if_not_neighbor_self(self):
+        uut = Cell(1,0)
+        self.assertFalse(uut.is_neighbor(Cell(1,0)))
+
     def test_tree_neighbors(self):
         uut = Cell(1,0)
         cells = [Cell(10,0), Cell(1,1), Cell(0,0), Cell(2,0)]
         self.assertEqual(3, uut.neighbors(cells))
+
+    def test_fewer_than_two_neigbors(self):
+        test_data = [Cell(1,0), Cell(1,1), Cell(10,10)]
+        uut = Board(test_data)
+
+        self.assertEqual(test_data, uut.rule_1())
+
+
+    def test_two_neigbors(self):
+        test_data = [Cell(1,0), Cell(1,1), Cell(0,0), Cell(10,10)]
+        uut = Board(test_data)
+
+        self.assertEqual([Cell(1,0), Cell(1,1), Cell(0,0)], uut.rule_2())
 
 if __name__ == '__main__':
     unittest.main()
