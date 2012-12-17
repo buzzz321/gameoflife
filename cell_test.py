@@ -52,5 +52,11 @@ class TestSequenceFunctions(unittest.TestCase):
 
         self.assertEqual([], uut.rule_3())
 
+    def test_revive_neigbors(self):
+        test_data = [Cell(1,0), Cell(1,1), Cell(0,0)]
+        dead_cells = [ Cell(0,1) ]
+        uut = Board(test_data)
+
+        self.assertEqual([Cell(0,1)], uut.rule_4(dead_cells, test_data))
 if __name__ == '__main__':
     unittest.main()
