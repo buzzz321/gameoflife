@@ -38,14 +38,19 @@ class TestSequenceFunctions(unittest.TestCase):
         test_data = [Cell(1,0), Cell(1,1), Cell(10,10)]
         uut = Board(test_data)
 
-        self.assertEqual(test_data, uut.rule_1())
-
+        self.assertEqual([Cell(1,0), Cell(1,1), Cell(10,10)], uut.rule_1())
 
     def test_two_neigbors(self):
         test_data = [Cell(1,0), Cell(1,1), Cell(0,0), Cell(10,10)]
         uut = Board(test_data)
 
         self.assertEqual([Cell(1,0), Cell(1,1), Cell(0,0)], uut.rule_2())
+
+    def test_four_neigbors(self):
+        test_data = [Cell(1,0), Cell(1,1), Cell(0,0), Cell(0,1)]
+        uut = Board(test_data)
+
+        self.assertEqual([], uut.rule_3())
 
 if __name__ == '__main__':
     unittest.main()
